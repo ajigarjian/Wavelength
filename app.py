@@ -10,11 +10,16 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 # Route for logic behind home page. Returns content from index.html
 @app.route("/")
 def index():
-    return render_template("index.html")
+    #assign the random percentile to a new variable
+    #user_percentile = random.randint(1,100)
+    #user_percentile = 5
+
+    #render the main html template and port the user percentile variable into the html template
+    return render_template("index.html", variable = '132' )
 
 #package randint into a function called spin
-def spin(): 
-    return random.randint(1,100) #returns a random integer from 1 to 100, inclusive
+#def spin(): 
+#    return random.randint(1,100) #returns a random integer from 1 to 100, inclusive
 
 #syntax to run app.py
 if __name__ == "__main__":
