@@ -12,10 +12,11 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 def index():
     #assign the random percentile to a new variable
     #user_percentile = random.randint(1,100)
-    #user_percentile = 5
+    #rendering the variable isn't working. so tried to simplify by assigning it one number
+    user_percentile = 5
 
     #render the main html template and port the user percentile variable into the html template
-    return render_template("index.html", variable = '132' )
+    return render_template("index.html", user_percentile = user_percentile )
 
 #package randint into a function called spin
 #def spin(): 
