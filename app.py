@@ -11,9 +11,7 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 @app.route("/")
 def index():
     #assign the random percentile to a new variable
-    #user_percentile = random.randint(1,100)
-    #rendering the variable isn't working. so tried to simplify by assigning it one number
-    user_percentile = 5
+    user_percentile = random.randint(1,100)
 
     #render the main html template and port the user percentile variable into the html template
     return render_template("index.html", user_percentile = user_percentile )
