@@ -44,17 +44,19 @@ def index():
 
 @app.route("/guessing", methods=["GET", "POST"])
 def guess():
-
+    #User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
 
+        #verify that user submitted guess
         if not request.form.get("percentile_guess"):
                 return render_template("apology.html")
 
-        guess_percentile = 0
+        guess_percentile = -90
 
-        guess_percentile = request.form.get("percentile_guess")
+        #save the guess as a variable
+        guess_percentile = int(request.form.get("percentile_guess"))
 
-        #translate the user_percentile to the center degree
+        #translate the guess_percentile to the center degree
         if guess_percentile <= 50:
             guess_percentile = -90 * (1-(guess_percentile/50))
         else:
@@ -62,8 +64,14 @@ def guess():
 
         return render_template("guessing.html", guess_percentile = guess_percentile)
 
+    # User reached route via GET (as by clicking a link or via redirect)
     else:
-        return render_template("guessing.html", guess_percentile = 0)
+        #default page (no guesses
+        return render_template("guessing.html", guess_percentile = -90)
+
+@app.route("/result", methods=["GET", "POST"])
+def result():
+    return render_template("result.html")
 
 #syntax to run app.py
 if __name__ == "__main__":

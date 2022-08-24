@@ -31,3 +31,12 @@ h2 {
     font-weight: bold;
 }
 
+#refresher_unavail {
+    background-color: #BDBDB6; 
+    margin: 0%;
+    padding: 5px;
+    font-size: large;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
