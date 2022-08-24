@@ -23,15 +23,24 @@ def index():
     #assign the random percentile to a new variable
     user_percentile = random.randint(1,100)
 
-    degree = 0
+    #initialize center line degree
+    winning_degree = 0
 
+    #translate the user_percentile to the center degree
     if user_percentile <= 50:
-        degree = -90 * (1-(user_percentile/50))
+        winning_degree = -90 * (1-(user_percentile/50))
     else:
-        degree = 90 * (-1+(user_percentile/50))
+        winning_degree = 90 * (-1+(user_percentile/50))
+
+    #creating variables for the 2 and 3 point lines
+    degree_3L = winning_degree - 3
+    degree_3R = winning_degree + 3
+
+    degree_2L = winning_degree - 6
+    degree_2R = winning_degree + 6
 
     #render the main html template and port the user percentile variable into the html template
-    return render_template("index.html", user_percentile = user_percentile, clue1 = clue1, clue2 = clue2, degree = degree)
+    return render_template("index.html", user_percentile = user_percentile, clue1 = clue1, clue2 = clue2, winning_degree = winning_degree, degree_3R = degree_3R, degree_3L = degree_3L, degree_2R = degree_2R, degree_2L = degree_2L)
 
 #package randint into a function called spin
 #def spin(): 
