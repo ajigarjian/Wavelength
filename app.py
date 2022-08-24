@@ -1,5 +1,6 @@
 import random #import random library for spinner function
 from flask import Flask, render_template, request, redirect, url_for
+from math import pi
 
 # Initialize instance of Flask application
 app = Flask(__name__)
@@ -22,8 +23,15 @@ def index():
     #assign the random percentile to a new variable
     user_percentile = random.randint(1,100)
 
+    degree = 0
+
+    if user_percentile <= 50:
+        degree = -90 * (1-(user_percentile/50))
+    else:
+        degree = 90 * (-1+(user_percentile/50))
+
     #render the main html template and port the user percentile variable into the html template
-    return render_template("index.html", user_percentile = user_percentile, clue1 = clue1, clue2 = clue2 )
+    return render_template("index.html", user_percentile = user_percentile, clue1 = clue1, clue2 = clue2, degree = degree)
 
 #package randint into a function called spin
 #def spin(): 
