@@ -41,12 +41,13 @@
                 </div>
             </div>
             
-            <div class="row text-center" id="button">
+            <div class="row text-center" id="percentile">
             <!-- not sure why if i change this id to 'percentile', the padding/margin doesn't apply-->
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4">
                     <!-- this shit isnt rendering. wtf-->
                     <p>Your percentile: {{ user_percentile }} </p>
+                    <p>Your clues are: {{ clue1 }} || {{ clue2 }}</p>
                 </div>
                 <div class="col-sm-4"></div>
                 
@@ -55,7 +56,9 @@
             <div class="row text-center" id="button" >
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4">
-                    <button type="button" class="btn btn-dark">Receive Clue & Spin Dial</button>
+                    <!-- <button type="button" class="btn btn-dark">Receive Clue & Spin Dial</button> -->
+                    <!-- now the Receive clue and spin dial button reloads the page and results in new percentile and clue-->
+                    <p class="nav-item" id="refresher"><a class="nav-link" href="/">Receive Clue & Spin Dial</a></p>
                 </div>
                 <div class="col-sm-4"></div>
                 

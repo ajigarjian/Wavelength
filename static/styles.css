@@ -9,13 +9,25 @@ h2 {
     padding-top: 50px;
 }
 
+
 #percentile {
-    margin: 25px;
-    padding: 50px;
+    margin: 15px;
+    padding: 30px;
 }
 
 #button {
-    margin: 25px;
-    padding: 50px;
+    margin: 15px;
+    padding: 25;
+    background-color: grey;
+    vertical-align: middle;
+}
+
+#refresher {
+    background-color:green; 
+    margin: 0%;
+    padding: 5px;
+    font-size: large;
+    vertical-align: middle;
+    font-weight: bold;
 }
 

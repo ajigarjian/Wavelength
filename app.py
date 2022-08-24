@@ -10,11 +10,22 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 # Route for logic behind home page. Returns content from index.html
 @app.route("/")
 def index():
+
+    myDict = {}
+
+    #preliminary dictionary of clues
+    myDict = {'Hot':'Cold', 'Weak':'Strong', 'Cool':'Uncool'}
+
+    #assign two variables by calling random on the dictionary
+    clue1, clue3 = random.choice(list(myDict.items()))
+
+    clue2 = "hot"
+
     #assign the random percentile to a new variable
     user_percentile = random.randint(1,100)
 
     #render the main html template and port the user percentile variable into the html template
-    return render_template("index.html", user_percentile = user_percentile )
+    return render_template("index.html", user_percentile = user_percentile, clue1 = clue1, clue2 = clue2 )
 
 #package randint into a function called spin
 #def spin(): 
