@@ -43,7 +43,7 @@ def index():
     return render_template("index.html", user_percentile = user_percentile, clue1 = clue1, clue2 = clue2, winning_degree = winning_degree, degree_3R = degree_3R, degree_3L = degree_3L, degree_2R = degree_2R, degree_2L = degree_2L)
 
 @app.route("/guessing", methods=["GET", "POST"])
-def index():
+def guess():
 
     if request.method == "POST":
 
