@@ -42,9 +42,28 @@ def index():
     #render the main html template and port the user percentile variable into the html template
     return render_template("index.html", user_percentile = user_percentile, clue1 = clue1, clue2 = clue2, winning_degree = winning_degree, degree_3R = degree_3R, degree_3L = degree_3L, degree_2R = degree_2R, degree_2L = degree_2L)
 
-#package randint into a function called spin
-#def spin(): 
-#    return random.randint(1,100) #returns a random integer from 1 to 100, inclusive
+@app.route("/guessing", methods=["GET", "POST"])
+def index():
+
+    if request.method == "POST":
+
+        if not request.form.get("percentile_guess"):
+                return render_template("apology.html")
+
+        guess_percentile = 0
+
+        guess_percentile = request.form.get("percentile_guess")
+
+        #translate the user_percentile to the center degree
+        if guess_percentile <= 50:
+            guess_percentile = -90 * (1-(guess_percentile/50))
+        else:
+            guess_percentile = 90 * (-1+(guess_percentile/50))
+
+        return render_template("guessing.html", guess_percentile = guess_percentile)
+
+    else:
+        return render_template("guessing.html", guess_percentile = 0)
 
 #syntax to run app.py
 if __name__ == "__main__":
