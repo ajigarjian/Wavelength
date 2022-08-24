@@ -14,12 +14,10 @@ def index():
     myDict = {}
 
     #preliminary dictionary of clues
-    myDict = {'Hot':'Cold', 'Weak':'Strong', 'Cool':'Uncool'}
+    myDict = {'Hot':'Cold', 'Weak':'Strong', 'Cool':'Uncool','Underrated':'Overrated','Good':'Bad','Normal':'Weird','Soft':'Hard'}
 
     #assign two variables by calling random on the dictionary
-    clue1, clue3 = random.choice(list(myDict.items()))
-
-    clue2 = "hot"
+    clue1, clue2 = random.choice(list(myDict.items()))
 
     #assign the random percentile to a new variable
     user_percentile = random.randint(1,100)
