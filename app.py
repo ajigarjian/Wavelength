@@ -11,8 +11,13 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 # Route for logic behind home page. Returns content from index.html
 @app.route("/")
 def index():
+    return render_template("index.html")
 
-    myDict = {}
+# Returns content from clues.html
+@app.route("/clues")
+def clues():
+
+    #myDict = {}
 
     #preliminary dictionary of clues
     myDict = {'Hot':'Cold', 'Weak':'Strong', 'Cool':'Uncool','Underrated':'Overrated','Good':'Bad','Normal':'Weird','Soft':'Hard'}
@@ -40,7 +45,7 @@ def index():
     degree_2R = winning_degree + 6
 
     #render the main html template and port the user percentile variable into the html template
-    return render_template("index.html", user_percentile = user_percentile, clue1 = clue1, clue2 = clue2, winning_degree = winning_degree, degree_3R = degree_3R, degree_3L = degree_3L, degree_2R = degree_2R, degree_2L = degree_2L)
+    return render_template("clues.html", user_percentile = user_percentile, clue1 = clue1, clue2 = clue2, winning_degree = winning_degree, degree_3R = degree_3R, degree_3L = degree_3L, degree_2R = degree_2R, degree_2L = degree_2L)
 
 @app.route("/guessing", methods=["GET", "POST"])
 def guess():
@@ -49,8 +54,9 @@ def guess():
 
         #verify that user submitted guess
         if not request.form.get("percentile_guess"):
-                return render_template("apology.html")
+                return render_template("apology.html", apology_input = "guess")
 
+        #start the dial all the way to the left
         guess_percentile = -90
 
         #save the guess as a variable
@@ -62,13 +68,15 @@ def guess():
         else:
             guess_percentile = 90 * (-1+(guess_percentile/50))
 
-        return render_template("guessing.html", guess_percentile = guess_percentile)
+        #render template with dial degree as updated guess
+        return render_template("guessing.html", guess_percentile = guess_percentile, clue1 = "clue1", clue2 = "clue2")
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         #default page (no guesses
-        return render_template("guessing.html", guess_percentile = -90)
+        return render_template("guessing.html", guess_percentile = -90, clue1 = "clue1", clue2 = "clue2")
 
+#TODO: create result.html, which superimposes the guess on the score
 @app.route("/result", methods=["GET", "POST"])
 def result():
     return render_template("result.html")

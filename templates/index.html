@@ -1,46 +1,38 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Clue-Giver
+    Start
 {% endblock %}
 
 {% block main %}
         <div class="container-fluid">
             <div style="background-color:#D3D3D3">
                 <h2>
-                    Clue-Giver
+                    Ready to Play?
                 </h2>
                 
                 <div class="row" id="spinner_div">
                     <svg height="250" width="1000">
-                        <circle id="spinner" cx="50%" cy="100%" r="200" fill="#FCFCED" stroke="black" stroke-width="20"/>
+                        <circle id="spinner" cx="50%" cy="100%" r="200" fill="#B6DEF2" stroke="black" stroke-width="20"/>
                         <circle id="inner_circle" cx="50%" cy="100%" r="50" fill="red" />
-                        <line x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="blue" stroke-width="8" stroke-linecap="round" transform="rotate({{ winning_degree }} 708 250)"/>
-                        <line x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="#F17829" stroke-width="8" stroke-linecap="round" transform="rotate({{ degree_3L }} 708 250)"/>
-                        <line x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="#F17829" stroke-width="8" stroke-linecap="round" transform="rotate({{ degree_3R }} 708 250)"/>
-                        <line x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="yellow" stroke-width="8" stroke-linecap="round" transform="rotate({{ degree_2L }} 708 250)"/>
-                        <line x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="yellow" stroke-width="8" stroke-linecap="round" transform="rotate({{ degree_2R }} 708 250)"/>
                     </svg>
                 </div>
             </div>
             
             <div class="row text-center" id="percentile">
                 <div class="col-sm-4"></div>
-                <div class="col-sm-4">
-                    <!-- <p>Your percentile: {{ user_percentile }} </p> -->
-                    <p>Your clues are: {{ clue1 }} || {{ clue2 }}</p>
-                </div>
+                <div class="col-sm-4"></div>
                 <div class="col-sm-4"></div>
                 
             </div>
 
             <div class="row text-center" id="button" >
                 <div class="col-sm-4">
-                    <p class="nav-item" id="refresher"><a class="nav-link" href="/">Receive Clue & Spin Dial</a></p>
+                    <p class="nav-item" id="refresher"><a class="nav-link" href="/clues">Receive Clue & Spin Dial</a></p>
                 </div>
                 <div class="col-sm-4">
                     <!-- now the Receive clue and spin dial button reloads the page and results in new percentile and clue-->
-                    <p class="nav-item" id="refresher"><a class="nav-link" href="/guessing">Ready for Guessing</a></p>
+                    <p class="nav-item" id="refresher_unavail">Ready for Guessing</p>
                 </div>
                 <div class="col-sm-4">
                     <p class="button" id="refresher_unavail">Submit Guess</p>
