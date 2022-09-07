@@ -41,7 +41,11 @@
                     <p class="nav-item" id="refresher"><a class="nav-link" href="/clues">Receive Clue & Spin Dial</a></p>
                 </div>
                 <div class="col-sm-4">
-                    <p class="nav-item" id="refresher"><a class="nav-link" href="/guessing">Ready for Guessing</a></p>
+                    <p class="nav-item" id="refresher">
+                        <a class="nav-link" href="{{ url_for('guessing', clue1='clue1', clue2='clue2') }}">
+                            Ready for Guessing
+                        </a>
+                    </p>
                 </div>
                 <div class="col-sm-4">
                     <p class="button" id="refresher_unavail">Submit Guess</p>
