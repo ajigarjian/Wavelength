@@ -44,10 +44,11 @@ def clues():
 
 @app.route("/guessing", methods=["GET", "POST"])
 def guess():
-    #User reached route via POST (as by submitting a form via POST)
     clue1 = request.args.get('clue1', None)
     clue2 = request.args.get('clue2', None)
     winning_degree = request.args.get('winning_degree', type=float)
+    
+    #User reached route via POST (as by submitting a form via POST)
     
     if request.method == "POST":
 
@@ -72,7 +73,7 @@ def guess():
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
-        #default page (no guesses
+        #default page (no guesses)
         return render_template("guessing.html", guess_percentile = -90, clue1 = clue1, clue2 = clue2, winning_degree=winning_degree)
 
 #TODO: create result.html, which superimposes the guess on the score
