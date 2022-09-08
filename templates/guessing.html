@@ -39,10 +39,10 @@
                     <p class="nav-item" id="refresher"><a class="nav-link" href="/clues">Receive Clue & Spin Dial</a></p>
                 </div>
                 <div class="col-sm-4">
-                    <p class="nav-item" id="refresher"><a class="nav-link" href="/guessing">Ready for Guessing</a></p>
+                    <p class="nav-item" id="refresher"><a class="nav-link" href="{{ url_for('guess', clue1=clue1, clue2=clue2, winning_degree=winning_degree) }}">Ready for Guessing</a></p>
                 </div>
                 <div class="col-sm-4">
-                    <p class="nav-item" id="refresher"><a class="nav-link" href="/result">Submit Guess</a></p>
+                    <p class="nav-item" id="refresher"><a class="nav-link" href="{{ url_for('result', clue1=clue1, clue2=clue2, winning_degree=winning_degree) }}">Submit Guess</a></p>
                 </div>
                 
             </div>
