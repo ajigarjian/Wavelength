@@ -43,5 +43,14 @@ h2 {
 #clue_display {
     width: 50%;
     margin: auto;
-    margin-top: 10px;
+}
+
+#left_display {
+    text-align: right;
+    padding-right:15%;
+}
+
+#right_display {
+    text-align: left;
+    padding-left:15%;
 }

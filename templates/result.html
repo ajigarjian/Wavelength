@@ -22,10 +22,26 @@
                 </div>
             </div>
             
+            <!-- div below the spinner for the two arrows pointing left and right. Need to adjust for moving displays. -->
+            <div class="row text-center" id="arrow_display">
+                <svg height="40" width="1000">
+                    <!-- Each arrow is a line and a triangle -->
+                    <g>
+                        <line x1="40%" y1="50%" x2= "44%" y2 = "50%" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                        <polygon points="565,17 565,23 555,20" style="fill:black;stroke:black ;stroke-width:1" />
+                    </g>
+                    <g>
+                        <line x1="60%" y1="50%" x2= "56%" y2 = "50%" stroke="black" stroke-width="2"/>
+                        <polygon points="850,17 850,23 860,20" style="fill:black;stroke:black ;stroke-width:1" />
+                    </g>
+                </svg>
+            </div>
+
+            <!-- div below the arrows displaying the clues. We can play around with margin and centering in css to line up differently -->
             <div class="row text-center" id="clue_display">
                 <div class="col-sm-6" id="left_display">{{ clue1 }}</div>
                 <div class="col-sm-6" id="right_display">{{ clue2 }}</div>
-            </div>
+            </div>    
 
             <div class="row text-center" id="percentile">
                 <div class="col-sm-4"></div>
