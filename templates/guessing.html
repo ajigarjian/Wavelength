@@ -7,11 +7,6 @@
 {% block main %}
         <div class="container-fluid">
             <div style="background-color:#D3D3D3">
-                <h2>
-                    Guesser:
-                    <!-- TODO: figure out how to carry over clues from clues.html to guessing.html-->
-                    <p>The clues are: {{ clue1 }} || {{ clue2 }}</p>
-                </h2>
                 
                 <div class="row" id="spinner_div">
                     <svg height="250" width="1000">
@@ -22,6 +17,11 @@
                 </div>
             </div>
             
+            <div class="row text-center" id="clue_display">
+                <div class="col-sm-6" id="left_display">{{ clue1 }}</div>
+                <div class="col-sm-6" id="right_display">{{ clue2 }}</div>
+            </div>    
+
             <form action="/guessing" method="post">
                 <div class="row text-center" id="percentile">
                     <div class="col-sm-4"></div>

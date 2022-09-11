@@ -7,10 +7,6 @@
 {% block main %}
         <div class="container-fluid">
             <div style="background-color:#D3D3D3">
-                <h2>
-                    Clue-Giver:
-                    <p>Your clues are: {{ clue1 }} || {{ clue2 }}</p>
-                </h2>
                 
                 <div class="row" id="spinner_div">
                     <svg height="250" width="1000">
@@ -25,6 +21,12 @@
                 </div>
             </div>
             
+            <div class="row text-center" id="clue_display">
+                <div class="col-sm-6" id="left_display">{{ clue1 }}</div>
+                <div class="col-sm-6" id="right_display">{{ clue2 }}</div>
+            </div>
+
+
             <div class="row text-center" id="percentile">
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4">
