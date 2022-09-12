@@ -8,6 +8,9 @@ app = Flask(__name__)
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
+#preliminary dictionary of clues
+myDict = {'Hot':'Cold', 'Weak':'Strong', 'Cool':'Uncool','Underrated':'Overrated','Good':'Bad','Normal':'Weird','Soft':'Hard'}
+
 # Route for logic behind home page. Returns content from index.html
 @app.route("/")
 def index():
@@ -18,9 +21,6 @@ def index():
 def clues():
 
     #myDict = {}
-
-    #preliminary dictionary of clues
-    myDict = {'Hot':'Cold', 'Weak':'Strong', 'Cool':'Uncool','Underrated':'Overrated','Good':'Bad','Normal':'Weird','Soft':'Hard'}
 
     #assign two variables by calling random on the dictionary
     clue1, clue2 = random.choice(list(myDict.items()))
