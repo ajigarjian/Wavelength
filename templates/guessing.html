@@ -9,10 +9,10 @@
             <div style="background-color:#D3D3D3">
                 
                 <div class="row" id="spinner_div">
-                    <svg height="250" width="1000">
-                        <circle id="spinner" cx="50%" cy="100%" r="200" fill="#B6DEF2" stroke="black" stroke-width="20"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="250" width="1000" onload="makeDraggable(evt)">
+                        <circle cx="50%" cy="100%" r="200" fill="#B6DEF2" stroke="black" stroke-width="20"/>
                         <circle id="inner_circle" cx="50%" cy="100%" r="50" fill="red" />
-                        <line x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="red" stroke-width="8" stroke-linecap="round" transform="rotate({{ guess_percentile }} 708 250)"/>
+                        <line class="draggable" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="red" stroke-width="8" stroke-linecap="round" transform="rotate({{ guess_percentile }} 708 250)"/>
                     </svg>
                 </div>
             </div>
