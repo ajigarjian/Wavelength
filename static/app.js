@@ -1,4 +1,5 @@
 
+
 //javascript function for dragging the dial. Guidance taken from here: https://www.petercollingridge.co.uk/tutorials/svg/interactive/dragging/
 function makeDraggable(evt) {
 
@@ -61,20 +62,23 @@ function makeDraggable(evt) {
             // gets x and y coordinate of mouse
             var mousePos = getMousePosition(evt);
 
-            //gets x value of element and stores in variable x, then sets it to be original x coordinate + 0.1
-            //selectedElement.setAttributeNS(null, "x2", mousePos.x-offset.x);
-            selectedElement.setAttributeNS(null, "x2", mousePos.x-offset.x);
-
-            var new_y = 250 - math.sqrt(40000-math.pow((mousePos.x-720),2))
-
-            //selectedElement.setAttributeNS(null, "y2", mousePos.y-offset.y);
-            selectedElement.setAttributeNS(null, "y2", new_y);
+            //adds offset to mouse position and stores into new variable
+            var newX = mousePos.x-offset.x;
             
+            //sets x2 attribute of selectedElement (in this case the line) to be the new X
+            selectedElement.setAttributeNS(null, "x2", newX);
+
+            //creates variable to store what the new y should be based on d = square root of ((x2-x1)^2 + (y2-y1)^2)
+            var newY = 250-Math.sqrt((40000 - Math.pow((newX - 720),2)))
+
+            //sets y2 attribue of selectedElement (in this case the line) to be the new Y
+            selectedElement.setAttributeNS(null, "y2", newY)
         }
     }
-
+   
     //stops the element from moving once the mouse has been released
     function endDrag(evt) {
         selectedElement = null;
+
     }
 }
