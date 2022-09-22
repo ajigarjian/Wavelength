@@ -62,8 +62,13 @@ function makeDraggable(evt) {
             var mousePos = getMousePosition(evt);
 
             //gets x value of element and stores in variable x, then sets it to be original x coordinate + 0.1
+            //selectedElement.setAttributeNS(null, "x2", mousePos.x-offset.x);
             selectedElement.setAttributeNS(null, "x2", mousePos.x-offset.x);
-            selectedElement.setAttributeNS(null, "y2", mousePos.y-offset.y);
+
+            var new_y = 250 - math.sqrt(40000-math.pow((mousePos.x-720),2))
+
+            //selectedElement.setAttributeNS(null, "y2", mousePos.y-offset.y);
+            selectedElement.setAttributeNS(null, "y2", new_y);
             
         }
     }

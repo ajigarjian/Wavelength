@@ -91,6 +91,10 @@ def result():
 def test():
     return render_template("test.html")
 
+@app.route("/instructions")
+def instructions():
+    return render_template("instructions.html")
+
 #syntax to run app.py
 if __name__ == "__main__":
     app.run(debug=True)
