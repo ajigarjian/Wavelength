@@ -64,7 +64,17 @@ function makeDraggable(evt) {
 
             //adds offset to mouse position and stores into new variable
             var newX = mousePos.x-offset.x;
-            
+
+            //if the mouse moves too far to the right, then cap it so the new y coordinate doesn't glitch
+            if (newX > 920) {
+                newX = 920;
+            }
+
+            //if the mouse moves too far to the left, then put a floor so the new y coordinate doesn't glitch
+            else if(newX < 520) {
+                newX = 520;
+            }
+        
             //sets x2 attribute of selectedElement (in this case the line) to be the new X
             selectedElement.setAttributeNS(null, "x2", newX);
 
