@@ -32,6 +32,15 @@ h2 {
     font-weight: bold;
 }
 
+#refresher_reveal {
+    background-color: #E5F55A; 
+    margin: 0%;
+    padding: 5px;
+    font-size: large;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
 #refresher_unavail {
     background-color: #BDBDB6; 
     margin: 0%;
@@ -59,3 +68,11 @@ h2 {
 .draggable {
     cursor: move;
 }
+
+#revealer {
+    position:absolute;
+    width:30vw;
+    height:30vw;
+    background-color:blue;
+    border-radius:50%;
+ }

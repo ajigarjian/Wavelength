@@ -92,3 +92,13 @@ function makeDraggable(evt) {
 
     }
 }
+
+window.onload = function(){
+   
+    refresher_reveal.addEventListener('click',touch);
+    
+    function touch(){
+        var revealer = document.getElementById('revealer'); 
+        revealer.style.visibility="hidden";
+        }       
+    }

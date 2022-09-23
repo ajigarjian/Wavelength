@@ -7,23 +7,12 @@
 {% block main %}
         <div class="container-fluid">
             <div style="background-color:#D3D3D3">
+                
                 <div class="row" id="spinner_div">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="250" onload="makeDraggable(evt)">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="250" width="1000" onload="makeDraggable(evt)">
                         <circle cx="50%" cy="100%" r="200" fill="#B6DEF2" stroke="black" stroke-width="20"/>
-
-                        <!-- the scorecard -->
-                        <line x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="blue" stroke-width="8" stroke-linecap="round" transform="rotate({{ winning_degree }} 708 250)"/>
-                        <line x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="#F17829" stroke-width="8" stroke-linecap="round" transform="rotate({{ winning_degree - 3}} 708 250)"/>
-                        <line x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="#F17829" stroke-width="8" stroke-linecap="round" transform="rotate({{ winning_degree + 3}} 708 250)"/>
-                        <line x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="yellow" stroke-width="8" stroke-linecap="round" transform="rotate({{ winning_degree - 6}} 708 250)"/>
-                        <line x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="yellow" stroke-width="8" stroke-linecap="round" transform="rotate({{ winning_degree + 6}} 708 250)"/>
-
-                        <!-- the hidder -->
-                        <circle id="revealer" cx="50%" cy="100%" r="200" fill="#B6DEF2" stroke="black" stroke-width="20"/>
                         <circle id="inner_circle" cx="50%" cy="100%" r="50" fill="red" />
-              
-                        <!-- dial with class "draggable" that turns cursor into clickable icon for usability -->
-                        <line class="draggable" x1="720" y1="250" x2= "720" y2 = "50" stroke="red" stroke-width="8" stroke-linecap="round" />
+                        <line class="draggable" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="red" stroke-width="8" stroke-linecap="round" transform="rotate({{ guess_percentile }} 708 250)"/>
                     </svg>
                 </div>
             </div>
@@ -49,8 +38,7 @@
                 <div class="col-sm-6" id="right_display">{{ clue2 }}</div>
             </div>    
 
-            <!--commenting the guessing box out
-                <form action="/guessing" method="post">
+            <form action="/guessing" method="post">
                 <div class="row text-center" id="percentile">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4">
@@ -61,7 +49,6 @@
                     
                 </div>
             </form>
-            -->
 
             <div class="row text-center" id="button" >
                 <div class="col-sm-4">
@@ -70,9 +57,8 @@
                 <div class="col-sm-4">
                     <p class="nav-item" id="refresher"><a class="nav-link" href="{{ url_for('guess', clue1=clue1, clue2=clue2, winning_degree=winning_degree) }}">Ready for Guessing</a></p>
                 </div>
-                <!-- clicking this reveals the scorecard-->
                 <div class="col-sm-4">
-                    <p class="nav-item" id="refresher_reveal"><a class="nav-link">Submit Guess</a></p>
+                    <p class="nav-item" id="refresher"><a class="nav-link" href="{{ url_for('result', clue1=clue1, clue2=clue2, winning_degree=winning_degree) }}">Submit Guess</a></p>
                 </div>
                 
             </div>
