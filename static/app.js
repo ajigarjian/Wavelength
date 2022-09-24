@@ -8,10 +8,11 @@ function makeDraggable(evt) {
     svg.addEventListener('mousemove', drag);
     svg.addEventListener('mouseup', endDrag);
     svg.addEventListener('mouseleave', endDrag);
+    window.addEventListener('resize', dialReset);
 
     //initialize an empty selected element
     var selectedElement = false;
-
+    
     //helper function to get the position of the mouse, details unnecessary to know. 
     function getMousePosition(evt) {
         var CTM = svg.getScreenCTM();
@@ -28,6 +29,18 @@ function makeDraggable(evt) {
         {
             selectedElement = evt.target;
         }
+    }
+    function dialReset(evt) {
+
+        var windowWidth = window.outerWidth;
+        var windowHeight = parseFloat((document.getElementById("dial_svg")).getAttributeNS(null, "height"));
+        var radiusPercentage = (parseFloat((document.getElementById("outer_circle")).getAttributeNS(null, "r")))/100.0
+        //for figuring out how percentages work as svg attributes: https://oreillymedia.github.io/Using_SVG/extras/ch05-percentages.html
+        var circleRadius = radiusPercentage*(Math.sqrt(Math.pow(windowWidth, 2) + Math.pow(windowHeight, 2))/Math.SQRT2)
+
+        //reset dial to be in upright position whenever window is resized
+        document.getElementById("dial").setAttributeNS(null, "x2", windowWidth*0.5);
+        document.getElementById("dial").setAttributeNS(null, "y2", (windowHeight - circleRadius));
     }
 
     function drag(evt) {
