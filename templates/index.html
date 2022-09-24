@@ -6,18 +6,25 @@
 
 {% block main %}
         <div class="container-fluid">
-            <div style="background-color:#D3D3D3">
                 <h2>
                     Ready to Play?
                 </h2>
-                
-                <div class="row" id="spinner_div">
-                    <svg width="100%" height="250">
-                        <circle id="spinner" cx="50%" cy="100%" r="200" fill="#B6DEF2" stroke="black" stroke-width="20"/>
-                        <circle id="inner_circle" cx="50%" cy="100%" r="50" fill="red" />
+
+                <div>        
+                    <svg id="dial_svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="250" onload="makeDraggable(evt)">
+                    
+                            <!-- blue half circle -->
+                            <circle id ="outer_circle" cx="50%" cy="100%" r="20%" fill="#B6DEF2" stroke="black" stroke-width="2%"/>
+                            
+                            <!-- inner red circle -->
+                            <circle id="inner_circle" cx="50%" cy="100%" r="4%" fill="red" />
                     </svg>
                 </div>
-            </div>
+                
+            
+
+
+
 
             <div class="row text-center" id="percentile">
                 <div class="col-sm-4"></div>
