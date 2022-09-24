@@ -52,12 +52,12 @@ function makeDraggable(evt) {
 
             //setting upper limit of x when moving dial
             if (newX > ((windowWidth*0.5)+circleRadius)) {
-                newX = ((windowWidth*0.5)+circleRadius);
+                newX = ((windowWidth*0.5)+circleRadius)-0.01;
             }
 
             //setting lower limit of x when moving dial
             else if (newX < ((windowWidth*0.5)-circleRadius)) {
-                newX = ((windowWidth*0.5)-circleRadius);
+                newX = ((windowWidth*0.5)-circleRadius)+0.01;
             }
 
             //sets x2 attribute of selectedElement (in this case the line) to be the new X
