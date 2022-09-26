@@ -92,7 +92,19 @@ def result():
 
 @app.route("/test")
 def test():
-    return render_template("test.html")
+    #assign the random percentile to a new variable
+    user_percentile = random.randint(1,100)
+
+    #initialize center line degree
+    winning_degree = 0
+
+    #translate the user_percentile to the center degree
+    if user_percentile <= 50:
+        winning_degree = -90 * (1-(user_percentile/50))
+    else:
+        winning_degree = 90 * (-1+(user_percentile/50))
+
+    return render_template("test.html", winning_degree=winning_degree)
 
 @app.route("/instructions")
 def instructions():

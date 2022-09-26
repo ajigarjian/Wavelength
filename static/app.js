@@ -30,17 +30,39 @@ function makeDraggable(evt) {
             selectedElement = evt.target;
         }
     }
-    function dialReset(evt) {
 
-        var windowWidth = window.outerWidth;
+    //resizes all the dials when the window is resized. Snaps movable dial to upright position and then moves the scoring lines to the correct location
+    function dialReset() {
+
+        //getting the winning degree from the html from the backend
+        winning_degree=parseFloat(document.getElementById("winning_deg").getAttributeNS(null, "value"));
+
+        //getting current svvg height and width (width happens to be width of window)
+        var windowWidth = window.outerWidth;   
         var windowHeight = parseFloat((document.getElementById("dial_svg")).getAttributeNS(null, "height"));
-        var radiusPercentage = (parseFloat((document.getElementById("outer_circle")).getAttributeNS(null, "r")))/100.0
+
+        //getting the radius of the half circle as a percentage of the svg's height and width
+        var radiusPercentage = (parseFloat((document.getElementById("outer_circle")).getAttributeNS(null, "r")))/100.0;
         //for figuring out how percentages work as svg attributes: https://oreillymedia.github.io/Using_SVG/extras/ch05-percentages.html
-        var circleRadius = radiusPercentage*(Math.sqrt(Math.pow(windowWidth, 2) + Math.pow(windowHeight, 2))/Math.SQRT2)
+        var circleRadius = radiusPercentage*(Math.sqrt(Math.pow(windowWidth, 2) + Math.pow(windowHeight, 2))/Math.SQRT2);
 
         //reset dial to be in upright position whenever window is resized
         document.getElementById("dial").setAttributeNS(null, "x2", windowWidth*0.5);
         document.getElementById("dial").setAttributeNS(null, "y2", (windowHeight - circleRadius));
+
+        //reset length of scoring lines when window is resized by taking into account the svg height minus the new circle radius
+        document.getElementById("middle_line").setAttributeNS(null, "y2", (windowHeight - circleRadius));
+        document.getElementById("left_orange").setAttributeNS(null, "y2", (windowHeight - circleRadius));
+        document.getElementById("right_orange").setAttributeNS(null, "y2", (windowHeight - circleRadius));
+        document.getElementById("left_yellow").setAttributeNS(null, "y2", (windowHeight - circleRadius));
+        document.getElementById("right_yellow").setAttributeNS(null, "y2", (windowHeight - circleRadius));
+
+        //reset angle of scoring lines to make sure they stay consistent with new window parameters
+        document.getElementById("middle_line").setAttributeNS(null, "transform", "rotate(" + winning_degree + " " + windowWidth/2 + " 250)");
+        document.getElementById("left_orange").setAttributeNS(null, "transform", "rotate(" + (winning_degree-3) + " " + windowWidth/2 + " 250)");
+        document.getElementById("right_orange").setAttributeNS(null, "transform", "rotate(" + (winning_degree+3) + " " + windowWidth/2 + " 250)");
+        document.getElementById("left_yellow").setAttributeNS(null, "transform", "rotate(" + (winning_degree-6) + " " + windowWidth/2 + " 250)");
+        document.getElementById("right_yellow").setAttributeNS(null, "transform", "rotate(" + (winning_degree+6) + " " + windowWidth/2 + " 250)");
     }
 
     function drag(evt) {

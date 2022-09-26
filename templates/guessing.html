@@ -12,11 +12,11 @@
         <circle id ="outer_circle" cx="50%" cy="100%" r="20%" fill="#B6DEF2" stroke="black" stroke-width="2%"/>
         
         <!-- the scorecard -->
-        <line x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="blue" stroke-width="8" stroke-linecap="round" transform="rotate({{ winning_degree }} 708 250)"/>
-        <line x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="#F17829" stroke-width="8" stroke-linecap="round" transform="rotate({{ winning_degree - 3}} 708 250)"/>
-        <line x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="#F17829" stroke-width="8" stroke-linecap="round" transform="rotate({{ winning_degree + 3}} 708 250)"/>
-        <line x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="yellow" stroke-width="8" stroke-linecap="round" transform="rotate({{ winning_degree - 6}} 708 250)"/>
-        <line x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="yellow" stroke-width="8" stroke-linecap="round" transform="rotate({{ winning_degree + 6}} 708 250)"/>
+        <line id = "middle_line" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="blue" stroke-width="1%" stroke-linecap="round" transform="rotate({{ winning_degree }} 708 250)"/>
+        <line id = "left_orange" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="#F17829" stroke-width="1%" stroke-linecap="round" transform="rotate({{ winning_degree - 3}} 708 250)"/>
+        <line id = "right_orange" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="#F17829" stroke-width="1%" stroke-linecap="round" transform="rotate({{ winning_degree + 3}} 708 250)"/>
+        <line id = "left_yellow" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="yellow" stroke-width="1%" stroke-linecap="round" transform="rotate({{ winning_degree - 6}} 708 250)"/>
+        <line id = "right_yellow" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="yellow" stroke-width="1%" stroke-linecap="round" transform="rotate({{ winning_degree + 6}} 708 250)"/>
 
         <!-- the hidder -->
         <circle id="revealer" cx="50%" cy="100%" r="20%" fill="#B6DEF2" stroke="black" stroke-width="2%"/>
@@ -84,4 +84,6 @@
             </div>
         </div>
 
+<!-- hidden html element to pass the winning degree from python back end, through html, through to javascript -->
+<var id="winning_deg" value="{{winning_degree}}" hidden></var>
 {% endblock %}
