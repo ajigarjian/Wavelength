@@ -47,6 +47,8 @@ def guess():
     clue1 = request.args.get('clue1', None)
     clue2 = request.args.get('clue2', None)
     winning_degree = request.args.get('winning_degree', type=float)
+
+    clue3 = "test"
     
     #User reached route via POST (as by submitting a form via POST)
     
@@ -69,12 +71,13 @@ def guess():
             guess_percentile = 90 * (-1+(guess_percentile/50))
 
         #render template with dial degree as updated guess
-        return render_template("guessing.html", guess_percentile = guess_percentile, clue1 = clue1, clue2 = clue2, winning_degree=winning_degree)
+        return render_template("guessing.html", guess_percentile = guess_percentile, clue1 = clue1, clue2 = clue2, winning_degree=winning_degree, clue3=clue3)
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         #default page (no guesses)
-        return render_template("guessing.html", guess_percentile = -90, clue1 = clue1, clue2 = clue2, winning_degree=winning_degree)
+        clue3 = "new_test"
+        return render_template("guessing.html", guess_percentile = -90, clue1 = clue1, clue2 = clue2, winning_degree=winning_degree, clue3 = clue3)
 
 #TODO: create result.html, which superimposes the guess on the score
 @app.route("/result", methods=["GET", "POST"])
