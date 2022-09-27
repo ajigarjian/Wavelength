@@ -113,12 +113,17 @@ function makeDraggable(evt) {
     }
 }
 
+//this shows the scorecard
 window.onload = function(){
-   
+
+    //when the button with id refresher_reveal is clicked..
     refresher_reveal.addEventListener('click',touch);
     
+    //run this function..
     function touch(){
+        //store the item with ID revealer to a variable..
         var revealer = document.getElementById('revealer'); 
+        //and then hide it..
         revealer.style.visibility="hidden";
         }       
     }

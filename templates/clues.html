@@ -40,12 +40,15 @@
             <div class="row text-center" id="clue_display">
                 <div class="col-sm-6" id="left_display">{{ clue1 }}</div>
                 <div class="col-sm-6" id="right_display">{{ clue2 }}</div>
+                
+                <!-- temp, to be deleted-->
                 <h1>
                     Test: {{ user_clue }}
                 </h1>
             </div>    
 
 
+            <!-- temp, to be deleted after we figure out passing the clue-->
             <div class="row text-center" id="percentile">
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4">
@@ -62,6 +65,7 @@
 
 {% endblock %}
 
+<!-- for the button that submits the clue-->
 {% block button_url %}
 <input type="text" name="clue" placeholder="Clue">
 <a href="{{ url_for('guess', user_clue=clue, clue1=clue1, clue2=clue2, winning_degree=winning_degree) }}" class="btn btn-primary" role="button" data-bs-toggle="button">Submit Clue</a>

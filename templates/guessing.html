@@ -18,7 +18,7 @@
         <line id = "left_yellow" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="yellow" stroke-width="1%" stroke-linecap="round" transform="rotate({{ winning_degree - 6}} 708 250)"/>
         <line id = "right_yellow" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="yellow" stroke-width="1%" stroke-linecap="round" transform="rotate({{ winning_degree + 6}} 708 250)"/>
 
-        <!-- the hidder -->
+        <!-- the hidder, tied to javascript that becomes hidden after clicking submit guess -->
         <circle id="revealer" cx="50%" cy="100%" r="20%" fill="#B6DEF2" stroke="black" stroke-width="2%"/>
 
         <!-- inner red circle -->
@@ -49,27 +49,19 @@
                 <div class="col-sm-6" id="right_display">{{ clue2 }}</div>
             </div>    
 
+            <!-- temp, to show user_clue passing from /clues-->
             <div>
                 <h1>
                     Clue: {{ user_clue }}
                 </h1>
             </div>  
 
-            <div class="row text-center" id="button" >
-                <div class="col-sm-4">
-                    <p class="nav-item" id="refresher"><a class="nav-link" href="/clues">Receive Clue & Spin Dial</a></p>
-                </div>
-                <div class="col-sm-4">
-                    <p class="nav-item" id="refresher"><a class="nav-link" href="{{ url_for('guess', clue1=clue1, clue2=clue2, winning_degree=winning_degree, user_clue=user_clue) }}">Ready for Guessing</a></p>
-                </div>
-                <!-- clicking this reveals the scorecard-->
-                <div class="col-sm-4">
-                    <p class="nav-item" id="refresher_reveal"><a class="nav-link">Submit Guess</a></p>
-                </div>
-                
-            </div>
-        </div>
-
 <!-- hidden html element to pass the winning degree from python back end, through html, through to javascript -->
 <var id="winning_deg" value="{{winning_degree}}" hidden></var>
+{% endblock %}
+
+<!-- button to submit guess, reveal scorecard-->
+{% block button_url %}
+<a class="btn btn-primary" id="refresher_reveal" role="button" data-bs-toggle="button">Submit Guess</a>
+
 {% endblock %}
