@@ -58,23 +58,12 @@
                 <div class="col-sm-4"></div>
                 
             </div>
-
-            <div class="row text-center" id="button" >
-                <div class="col-sm-4">
-                    <p class="nav-item" id="refresher"><a class="nav-link" href="/clues">Receive Clue & Spin Dial</a></p>
-                </div>
-                <div class="col-sm-4">
-                    <p class="nav-item" id="refresher">
-                        <a class="nav-link" href="{{ url_for('guess', clue1=clue1, clue2=clue2, winning_degree=winning_degree, user_clue=user_clue) }}">
-                            Ready for Guessing
-                        </a>
-                    </p>
-                </div>
-                <div class="col-sm-4">
-                    <p class="button" id="refresher_unavail">Submit Guess</p>
-                </div>
-                
-            </div>
         </div>
+
+{% endblock %}
+
+{% block button_url %}
+<input type="text" name="clue" placeholder="Clue">
+<a href="{{ url_for('guess', user_clue=clue, clue1=clue1, clue2=clue2, winning_degree=winning_degree) }}" class="btn btn-primary" role="button" data-bs-toggle="button">Submit Clue</a>
 
 {% endblock %}

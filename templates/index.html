@@ -20,32 +20,12 @@
                             <circle id="inner_circle" cx="50%" cy="100%" r="4%" fill="red" />
                     </svg>
                 </div>
-                
-            
-
-
-
-
-            <div class="row text-center" id="percentile">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4"></div>
-                
-            </div>
-
-            <div class="row text-center" id="button" >
-                <div class="col-sm-4">
-                    <p class="nav-item" id="refresher"><a class="nav-link" href="/clues">Receive Clue & Spin Dial</a></p>
-                </div>
-                <div class="col-sm-4">
-                    <!-- now the Receive clue and spin dial button reloads the page and results in new percentile and clue-->
-                    <p class="nav-item" id="refresher_unavail">Ready for Guessing</p>
-                </div>
-                <div class="col-sm-4">
-                    <p class="button" id="refresher_unavail">Submit Guess</p>
-                </div>
-                
-            </div>
         </div>
+
+{% endblock %}
+
+{% block button_url %}
+
+<a href="/clues" class="btn btn-primary" role="button" data-bs-toggle="button">Next</a>
 
 {% endblock %}

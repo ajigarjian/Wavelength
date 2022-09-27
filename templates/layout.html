@@ -28,9 +28,12 @@
                 </div>
             </div>
           </nav>
-
+        
         {% block main %}{% endblock %}
-    
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+          {% block button_url %}{% endblock %}
+        </div>
     </body>
 
     <script src="{{url_for('static', filename='app.js')}}"></script>
