@@ -17,41 +17,42 @@ def index():
     return render_template("index.html")
 
 # Returns content from clues.html
-@app.route("/clues")
+@app.route("/clues", methods=["GET", "POST"])
 def clues():
+        #assign two variables by calling random on the dictionary
+        clue1, clue2 = random.choice(list(myDict.items()))
 
-    #myDict = {}
+        #assign the random percentile to a new variable
+        user_percentile = random.randint(1,100)
 
-    #assign two variables by calling random on the dictionary
-    clue1, clue2 = random.choice(list(myDict.items()))
+        #initialize center line degree
+        winning_degree = 0
 
-    #assign the random percentile to a new variable
-    user_percentile = random.randint(1,100)
+        user_clue = "higher_test"
 
-    #initialize center line degree
-    winning_degree = 0
+        #translate the user_percentile to the center degree
+        if user_percentile <= 50:
+            winning_degree = -90 * (1-(user_percentile/50))
+        else:
+            winning_degree = 90 * (-1+(user_percentile/50))
 
-    #translate the user_percentile to the center degree
-    if user_percentile <= 50:
-        winning_degree = -90 * (1-(user_percentile/50))
-    else:
-        winning_degree = 90 * (-1+(user_percentile/50))
-
-    #creating variables for the 2 and 3 point lines
-
-    #render the main html template and port the user percentile variable into the html template
-    return render_template("clues.html", user_percentile = user_percentile, clue1 = clue1, clue2 = clue2, winning_degree = winning_degree)
+        if request.method == "POST":
+            #store form 'clues' response into variable
+            user_clue = request.form.get("clue")
+            return render_template("clues.html", clue1 = clue1, clue2 = clue2, winning_degree = winning_degree, user_clue=user_clue)
+        
+        else:
+            #render the main html template and port the user percentile variable into the html template
+            return render_template("clues.html", clue1 = clue1, clue2 = clue2, winning_degree = winning_degree)
 
 @app.route("/guessing", methods=["GET", "POST"])
 def guess():
     clue1 = request.args.get('clue1', None)
     clue2 = request.args.get('clue2', None)
     winning_degree = request.args.get('winning_degree', type=float)
-
-    clue3 = "test"
+    user_clue = request.args.get('user_clue', None)
     
     #User reached route via POST (as by submitting a form via POST)
-    
     if request.method == "POST":
 
         #verify that user submitted guess
@@ -71,13 +72,13 @@ def guess():
             guess_percentile = 90 * (-1+(guess_percentile/50))
 
         #render template with dial degree as updated guess
-        return render_template("guessing.html", guess_percentile = guess_percentile, clue1 = clue1, clue2 = clue2, winning_degree=winning_degree, clue3=clue3)
+        return render_template("guessing.html", guess_percentile = guess_percentile, clue1 = clue1, clue2 = clue2, winning_degree=winning_degree, user_clue=user_clue)
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         #default page (no guesses)
-        clue3 = "new_test"
-        return render_template("guessing.html", guess_percentile = -90, clue1 = clue1, clue2 = clue2, winning_degree=winning_degree, clue3 = clue3)
+        
+        return render_template("guessing.html", guess_percentile = -90, clue1 = clue1, clue2 = clue2, winning_degree=winning_degree, user_clue=user_clue)
 
 #TODO: create result.html, which superimposes the guess on the score
 @app.route("/result", methods=["GET", "POST"])

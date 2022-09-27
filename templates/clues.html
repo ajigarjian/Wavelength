@@ -40,6 +40,9 @@
             <div class="row text-center" id="clue_display">
                 <div class="col-sm-6" id="left_display">{{ clue1 }}</div>
                 <div class="col-sm-6" id="right_display">{{ clue2 }}</div>
+                <h1>
+                    Test: {{ user_clue }}
+                </h1>
             </div>    
 
 
@@ -47,8 +50,10 @@
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4">
                     <!-- TODO: build this out so it stores clue and displays on guessing.html-->
-                    <input type="text" id="clue" name="clue" placeholder="Clue"><br><br>
-                    <input type="submit" value="Submit">
+                    <form action="/clues" method="post">
+                        <input type="text" id="clue" name="clue" placeholder="Clue"><br><br>
+                        <input type="submit" value="Submit">
+                    </form>
                 </div>
                 <div class="col-sm-4"></div>
                 
@@ -60,7 +65,7 @@
                 </div>
                 <div class="col-sm-4">
                     <p class="nav-item" id="refresher">
-                        <a class="nav-link" href="{{ url_for('guess', clue1=clue1, clue2=clue2, winning_degree=winning_degree) }}">
+                        <a class="nav-link" href="{{ url_for('guess', clue1=clue1, clue2=clue2, winning_degree=winning_degree, user_clue=user_clue) }}">
                             Ready for Guessing
                         </a>
                     </p>
