@@ -127,3 +127,18 @@ window.onload = function(){
         revealer.style.visibility="hidden";
         }       
     }
+
+//this shows the scorecard
+window.onload = function(){
+
+    //when the button with id refresher_hider is clicked..
+    refresher_hider.addEventListener('click',touch);
+    
+    //run this function..
+    function touch(){
+        //store the item with ID revealer to a variable..
+        var hider = document.getElementById('hider'); 
+        //and then hide it..
+        hider.setAttributeNS(null, "hidden", no);
+        }       
+    }

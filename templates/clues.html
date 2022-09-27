@@ -4,70 +4,76 @@
     Clue-Giver
 {% endblock %}
 
-{% block main %}
-        <div class="container-fluid">
-            <div style="background-color:#D3D3D3">
-                
-                <div class="row" id="spinner_div">
-                    <svg width="100%" height="250">
-                        <circle cx="50%" cy="100%" r="200" fill="#FCFCED" stroke="black" stroke-width="20"/>
-                        <circle id="inner_circle" cx="50%" cy="100%" r="50" fill="red" />
-                        <line id = "middle_line" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="blue" stroke-width="1%" stroke-linecap="round" transform="rotate({{ winning_degree }} 708 250)"/>
-                        <line id = "left_orange" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="#F17829" stroke-width="1%" stroke-linecap="round" transform="rotate({{ winning_degree - 3}} 708 250)"/>
-                        <line id = "right_orange" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="#F17829" stroke-width="1%" stroke-linecap="round" transform="rotate({{ winning_degree + 3}} 708 250)"/>
-                        <line id = "left_yellow" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="yellow" stroke-width="1%" stroke-linecap="round" transform="rotate({{ winning_degree - 6}} 708 250)"/>
-                        <line id = "right_yellow" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="yellow" stroke-width="1%" stroke-linecap="round" transform="rotate({{ winning_degree + 6}} 708 250)"/>
-                
-                    </svg>
-                </div>
-            </div>
+{% block main %}       
+    <svg id="dial_svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="250" onload="makeDraggable(evt)">
+
+        <!-- blue half circle -->
+        <circle id ="outer_circle" cx="50%" cy="100%" r="20%" fill="white" stroke="black" stroke-width="2%"/>
+        
+        <!-- the scorecard -->
+        <line id = "middle_line" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="blue" stroke-width="1%" stroke-linecap="round" transform="rotate({{ winning_degree }} 708 250)"/>
+        <line id = "left_orange" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="#F17829" stroke-width="1%" stroke-linecap="round" transform="rotate({{ winning_degree - 3}} 708 250)"/>
+        <line id = "right_orange" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="#F17829" stroke-width="1%" stroke-linecap="round" transform="rotate({{ winning_degree + 3}} 708 250)"/>
+        <line id = "left_yellow" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="yellow" stroke-width="1%" stroke-linecap="round" transform="rotate({{ winning_degree - 6}} 708 250)"/>
+        <line id = "right_yellow" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="yellow" stroke-width="1%" stroke-linecap="round" transform="rotate({{ winning_degree + 6}} 708 250)"/>
+
+        <!-- the hider, tied to javascript that becomes hidden after clicking submit guess -->
+        <circle id="hider" cx="50%" cy="100%" r="20%" fill="#B6DEF2" stroke="black" stroke-width="2%" hidden="yes"/>
+
+        <!-- inner red circle -->
+        <circle id="inner_circle" cx="50%" cy="100%" r="4%" fill="red" />
+
+        <!-- dial with class "draggable" that turns cursor into clickable icon for usability -->
+        <line id="dial" class="draggable" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="red" stroke-width="1%" stroke-linecap="round"/>
+    </svg>
             
-            <!-- div below the spinner for the two arrows pointing left and right. Need to adjust for moving displays. -->
-            <div class="row text-center" id="arrow_display">
-                <svg height="40" width="1000">
-                    <g>
-                        <line x1="40%" y1="50%" x2= "44%" y2 = "50%" stroke="black" stroke-width="2" stroke-linecap="round"/>
-                        <polygon points="565,17 565,23 555,20" style="fill:black;stroke:black ;stroke-width:1" />
-                    </g>
-                    <g>
-                        <line x1="60%" y1="50%" x2= "56%" y2 = "50%" stroke="black" stroke-width="2"/>
-                        <polygon points="850,17 850,23 860,20" style="fill:black;stroke:black ;stroke-width:1" />
-                    </g>
-                </svg>
-            </div> 
+    <!-- div below the spinner for the two arrows pointing left and right. Need to adjust for moving displays. -->
+    <div class="row text-center" id="arrow_display">
+        <svg height="40" width="1000">
+            <g>
+                <line x1="40%" y1="50%" x2= "44%" y2 = "50%" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                <polygon points="565,17 565,23 555,20" style="fill:black;stroke:black ;stroke-width:1" />
+            </g>
+            <g>
+                <line x1="60%" y1="50%" x2= "56%" y2 = "50%" stroke="black" stroke-width="2"/>
+                <polygon points="850,17 850,23 860,20" style="fill:black;stroke:black ;stroke-width:1" />
+            </g>
+        </svg>
+    </div> 
 
-            <!-- div below the arrows displaying the clues. We can play around with margin and centering in css to line up differently -->
-            <div class="row text-center" id="clue_display">
-                <div class="col-sm-6" id="left_display">{{ clue1 }}</div>
-                <div class="col-sm-6" id="right_display">{{ clue2 }}</div>
-                
-                <!-- temp, to be deleted-->
-                <h1>
-                    Test: {{ user_clue }}
-                </h1>
-            </div>    
+    <!-- div below the arrows displaying the clues. We can play around with margin and centering in css to line up differently -->
+    <div class="row text-center" id="clue_display">
+        <div class="col-sm-6" id="left_display">{{ clue1 }}</div>
+        <div class="col-sm-6" id="right_display">{{ clue2 }}</div>
+        
+        <!-- temp, to be deleted-->
+        <h1>
+            Test: {{ user_clue }}
+        </h1>
+    </div>    
 
 
-            <!-- temp, to be deleted after we figure out passing the clue-->
-            <div class="row text-center">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4">
-                    <!-- TODO: build this out so it stores clue and displays on guessing.html-->
-                    <form action="/clues" method="post">
-                        <input type="text" id="clue" name="clue" placeholder="Clue"><br><br>
-                        <input type="submit" value="Submit">
-                    </form>
-                </div>
-                <div class="col-sm-4"></div>
-                
-            </div>
+    <!-- temp, to be deleted after we figure out passing the clue-->
+    <div class="row text-center">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <!-- TODO: build this out so it stores clue and displays on guessing.html-->
+            <form action="/clues" method="post">
+                <input type="text" id="clue" name="clue" placeholder="Clue"><br><br>
+                <input type="submit" value="Submit">
+            </form>
         </div>
+        <div class="col-sm-4"></div>
+        
+    </div>
 
 {% endblock %}
 
 <!-- for the button that submits the clue-->
 {% block button_url %}
-<input type="text" name="clue" placeholder="Clue">
-<a href="{{ url_for('guess', user_clue=clue, clue1=clue1, clue2=clue2, winning_degree=winning_degree) }}" class="btn btn-primary" role="button" data-bs-toggle="button">Submit Clue</a>
+
+    <input type="text" name="clue" placeholder="Please Enter Clue">
+    <button class="btn btn-primary" id="refresher_hider" role="button" data-bs-toggle="button" type="submit">Submit Clue</a>
+
 
 {% endblock %}

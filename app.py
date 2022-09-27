@@ -1,5 +1,5 @@
 import random #import random library for spinner function
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from math import pi
 
 # Initialize instance of Flask application
@@ -50,35 +50,38 @@ def guess():
     clue1 = request.args.get('clue1', None)
     clue2 = request.args.get('clue2', None)
     winning_degree = request.args.get('winning_degree', type=float)
-    user_clue = request.args.get('user_clue', None)
+    #user_clue = request.args.get('user_clue', None)
     
     #User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
 
-        #verify that user submitted guess
-        if not request.form.get("percentile_guess"):
-                return render_template("apology.html", apology_input = "guess")
+        #store 
+        user_clue = request.form['clue']
+
+        #verify that user submitted clue
+        if not user_clue:
+                flash("Clue is required")
 
         #start the dial all the way to the left
-        guess_percentile = -90
+        #guess_percentile = -90
 
         #save the guess as a variable
-        guess_percentile = int(request.form.get("percentile_guess"))
+        #guess_percentile = int(request.form.get("percentile_guess"))
 
         #translate the guess_percentile to the center degree
-        if guess_percentile <= 50:
-            guess_percentile = -90 * (1-(guess_percentile/50))
-        else:
-            guess_percentile = 90 * (-1+(guess_percentile/50))
+        #if guess_percentile <= 50:
+        #    guess_percentile = -90 * (1-(guess_percentile/50))
+        #else:
+        #    guess_percentile = 90 * (-1+(guess_percentile/50))
 
         #render template with dial degree as updated guess
-        return render_template("guessing.html", guess_percentile = guess_percentile, clue1 = clue1, clue2 = clue2, winning_degree=winning_degree, user_clue=user_clue)
+        return render_template("guessing.html", clue1 = clue1, clue2 = clue2, winning_degree=winning_degree, user_clue=user_clue)
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
-        #default page (no guesses)
+        #user_clue = request.form['clue']
         
-        return render_template("guessing.html", guess_percentile = -90, clue1 = clue1, clue2 = clue2, winning_degree=winning_degree, user_clue=user_clue)
+        return render_template("guessing.html", clue1 = clue1, clue2 = clue2, winning_degree=winning_degree, user_clue=user_clue)
 
 #TODO: create result.html, which superimposes the guess on the score
 @app.route("/result", methods=["GET", "POST"])
