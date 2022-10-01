@@ -17,38 +17,6 @@ h2 {
     vertical-align: middle;
 }
 
-/* don't need this anymore-- was for the 3 original buttons
-#refresher {
-    background-color: #E5F55A; 
-    margin: 0%;
-    padding: 5px;
-    font-size: large;
-    vertical-align: middle;
-    font-weight: bold;
-} */
-
-
-/* don't need this anymore-- was originally for the submit guess button, to reveal scorecard
-
-#refresher_reveal {
-    background-color: blue;
-    margin: 0%;
-    padding: 5px;
-    font-size: large;
-    vertical-align: middle;
-    font-weight: bold;
-} */
-
-/* don't need this anymore, was a test to grey out old buttons
-#refresher_unavail {
-    background-color: #BDBDB6; 
-    margin: 0%;
-    padding: 5px;
-    font-size: large;
-    vertical-align: middle;
-    font-weight: bold;
-} */
-
 #clue_display {
     width: 50%;
     margin: auto;

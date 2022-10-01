@@ -63,6 +63,7 @@ function makeDraggable(evt) {
         document.getElementById("right_orange").setAttributeNS(null, "transform", "rotate(" + (winning_degree+3) + " " + windowWidth/2 + " 250)");
         document.getElementById("left_yellow").setAttributeNS(null, "transform", "rotate(" + (winning_degree-6) + " " + windowWidth/2 + " 250)");
         document.getElementById("right_yellow").setAttributeNS(null, "transform", "rotate(" + (winning_degree+6) + " " + windowWidth/2 + " 250)");
+
     }
 
     function drag(evt) {

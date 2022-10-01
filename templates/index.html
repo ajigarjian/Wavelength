@@ -1,31 +1,25 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Start
+    Home
 {% endblock %}
 
 {% block main %}
-        <div class="container-fluid">
-                <h2>
-                    Ready to Play?
-                </h2>
-
-                <div>        
-                    <svg id="dial_svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="250" onload="makeDraggable(evt)">
-                    
-                            <!-- blue half circle -->
-                            <circle id ="outer_circle" cx="50%" cy="100%" r="20%" fill="#B6DEF2" stroke="black" stroke-width="2%"/>
-                            
-                            <!-- inner red circle -->
-                            <circle id="inner_circle" cx="50%" cy="100%" r="4%" fill="red" />
-                    </svg>
-                </div>
-        </div>
+    <svg id="dial_svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="250" onload="makeDraggable(evt)">
+    
+            <!-- blue half circle -->
+            <circle id ="outer_circle" cx="50%" cy="100%" r="20%" fill="#B6DEF2" stroke="black" stroke-width="2%"/>
+                        
+            <!-- inner red circle and dial -->
+            <circle id="inner_circle" cx="50%" cy="100%" r="4%" fill="red" />
+            <line id="dial" class="draggable" x1="50%" y1="100%" x2= "50%" y2 = "20%" stroke="red" stroke-width="1%" stroke-linecap="round"/>
+    </svg>
 
 {% endblock %}
 
 {% block button_url %}
-
-<a href="/clues" class="btn btn-primary" role="button" data-bs-toggle="button">Next</a>
-
+<form action="/clues" method="POST">
+    <input type="hidden" value="game_start">
+    <input class="btn btn-primary" type="submit" value="Click to Play" name="action"/>
+</form>
 {% endblock %}
