@@ -35,7 +35,9 @@
         <!-- for the 1 button across diff pages -->
         <br>
         <br>
-          {% block button_url %}{% endblock %}
+        <div class="row text-center">
+            {% block button_url %}{% endblock %}
+        </div>
     </body>
 
     <script src="{{url_for('static', filename='app.js')}}"></script>
