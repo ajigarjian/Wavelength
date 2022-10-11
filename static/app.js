@@ -133,24 +133,37 @@ window.onload = function(){
     
     //run this function..
     function touch(){
+        //to hide the extra scoreboard hider
         //store the item with ID revealer to a variable..
         var revealer = document.getElementById('revealer'); 
         //and then hide it..
-        revealer.style.visibility="hidden";
-        }       
+        revealer.style.visibility="hidden";    
+
+        //to hide the blue circle
+        //store the item with ID revealer to a variable..
+        var outer_circle = document.getElementById('outer_circle'); 
+        //and then hide it..
+        outer_circle.style.visibility="hidden";
+
+        //for white circle  
+        //store the item with ID revealer to a variable..
+        var outer_circle_white = document.getElementById('outer_circle_white'); 
+        //and then hide it..
+        outer_circle_white.style.visibility="visible";
+        }     
     }
 
 // //this shows the scorecard
 // window.onload = function(){
 
 //     //when the button with id refresher_hider is clicked..
-//     refresher_hider.addEventListener('click',touch);
+//     refresher_reveal.addEventListener('click',touch);
     
 //     //run this function..
 //     function touch(){
 //         //store the item with ID revealer to a variable..
-//         var hider = document.getElementById('hider'); 
+//         var revealer = document.getElementById('revealer'); 
 //         //and then hide it..
-//         hider.setAttributeNS(null, "hidden", no);
+//         revealer.setAttributeNS(null, "hidden", no);
 //         }       
 //     }
